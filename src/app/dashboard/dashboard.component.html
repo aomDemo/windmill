@@ -1,0 +1,80 @@
+<app-top-navigation></app-top-navigation>
+
+<div class="page-content">
+  <mat-form-field appearance="fill" class="search-field-mobile">
+    <mat-label>Search</mat-label>
+    <input matInput [formControl]="searchControl" (keyup.enter)="onSearch()" />
+    <button matSuffix mat-icon-button class="search-button" (click)="onSearch()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
+        <td mat-cell *matCellDef="let element">{{ element.location }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="distance">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Distance</th>
+        <td mat-cell *matCellDef="let element">{{ element.distance | number: '1.2-2' }} km</td>
+      </ng-container>
+
+      <ng-container matColumnDef="deadline">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Deadline</th>
+        <td mat-cell *matCellDef="let element">{{ element.deadline | date: 'dd.MM.yyyy' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+        <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="download">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field appearance="fill" class="search-field">
+            <mat-label>Search</mat-label>
+            <input matInput [formControl]="searchControl" (keyup.enter)="onSearch()" />
+            <button matSuffix mat-icon-button class="search-button" (click)="onSearch()">
+              <mat-icon>search</mat-icon>
+            </button>
+          </mat-form-field>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <a [href]="element.documentUrl" class="download-link" target="_blank">
+            Download Details <mat-icon>vertical_align_bottom</mat-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <div *ngIf="dataSource.loading$ | async" class="spinner-container">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+
+  <div *ngIf="!(dataSource.loading$ | async) && dataSource.filteredData.length === 0" class="no-results">
+    <p>No results</p>
+  </div>
+
+  <div class="manual-pagination">
+    <div *ngIf="(dataSource.tasksLength$ | async) !== 0">
+      <button mat-button *ngIf="paginator.hasPreviousPage()" (click)="paginator.previousPage()"><</button>
+      <button
+        *ngFor="let page of manualNavigationPages"
+        mat-button
+        (click)="moveToPage(page)"
+        [ngClass]="paginator.pageIndex === page && 'current-page'"
+      >
+        {{ page + 1 }}
+      </button>
+      <button mat-button *ngIf="paginator.hasNextPage()" (click)="paginator.nextPage()">></button>
+    </div>
+
+    <mat-paginator [length]="dataSource.tasksLength$ | async" [pageSize]="pageSize"></mat-paginator>
+  </div>
+</div>
