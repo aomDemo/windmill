@@ -1,0 +1,27 @@
+<mat-card>
+  <div class="background-blur"></div>
+  <div class="background-white"></div>
+  <div class="content">
+
+    <div class="logo">
+      <img src="assets/logo.png">
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onLogin()">
+      <div class="input-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input type="text" matInput formControlName="userName">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password">
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" type="submit" class="sign-in">Sign In</button>
+    </form>
+
+    <a class="forgot-password" (click)="onResetPassword()">Reset password</a>
+    
+  </div>
+</mat-card>

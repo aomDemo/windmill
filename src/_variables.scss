@@ -1,0 +1,90 @@
+$md-secondary: (
+  50: #e0f0f5,
+  100: #b3dae5,
+  200: #6eb6c5,
+  300: #4da8c3,
+  400: #2696b6,
+  500: #0083a9,
+  600: #007ba2,
+  700: #007098,
+  800: #00668f,
+  900: #00537e,
+  A100: #acdeff,
+  A200: #79c9ff,
+  A400: #46b5ff,
+  A700: #2caaff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);
+
+$md-primary: (
+  50: #e8ebef,
+  100: #c5ced6,
+  200: #9faebb,
+  300: #788d9f,
+  400: #5b748b,
+  500: #3e5c76,
+  600: #38546e,
+  700: #304a63,
+  800: #284159,
+  900: #1b3046,
+  A100: #87beff,
+  A200: #54a3ff,
+  A400: #2188ff,
+  A700: #087aff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff
+  )
+);
+
+/* variables */
+$main-color-100: map-get($md-primary, 500);
+$main-color-80: map-get($md-primary, 400);
+$main-color-60: map-get($md-primary, 300);
+$main-color-40: map-get($md-primary, 200);
+$main-color-20: map-get($md-primary, 100);
+
+$main-color-light: #71cd96;
+
+$main-gray: #969696;
+$main-gray-light: #f5f5f5;
+
+$main-text-color: rgba(0, 0, 0, 0.87);
+
+$sec-color-100: map-get($md-secondary, 500);
+$sec-color-80: map-get($md-secondary, 300);
+$sec-color-60: map-get($md-secondary, 200);
+$sec-color-40: map-get($md-secondary, 100);
+$sec-color-20: map-get($md-secondary, 50);
+
+$color-success: #6fb967;
+$color-error: #c6686b;
+$color-info: #2196f3;
+$color-white: white;
