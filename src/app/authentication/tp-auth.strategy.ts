@@ -51,7 +51,7 @@ export class TpAuthStrategy implements AuthStrategy {
     }
 
     // TODO: Request session token form backend and return it
-    return 'TODO: sessionToken';
+    return null;
   }
 
   async storeToken(token: string): Promise<void> {

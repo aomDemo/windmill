@@ -6,6 +6,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { TaskDetailsDialogComponent } from './task-details-dialog/task-details-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,7 +25,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService, private dialog: MatDialog) {}
 
   get manualNavigationPages(): number[] {
     const currentPage = this.paginator.pageIndex;
@@ -53,6 +55,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       pageSize: this.paginator.pageSize,
       length: this.paginator.length
     });
+  }
+
+  onOpenDetails(task: Task) {
+    const dialogRef = this.dialog.open(TaskDetailsDialogComponent);
+    dialogRef.componentInstance.task = task;
   }
 
   ngOnInit() {

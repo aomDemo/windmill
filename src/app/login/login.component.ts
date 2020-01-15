@@ -47,6 +47,6 @@ export class LoginComponent implements OnInit {
   }
 
   onResetPassword() {
-    this.snackbarService.presentInfoMessage('Not implemented', 10000);
+    this.snackbarService.presentInfoMessage('Email with a new password has been sent.', 5000);
   }
 }

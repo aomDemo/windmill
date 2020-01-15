@@ -1,0 +1,35 @@
+@import 'variables';
+
+.dialog-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  
+  h3 {
+    margin: 0;
+    font-size: 20px;
+    font-family: adobe-gurmukhi, sans-serif;
+    font-weight: 400;
+  }
+
+  button {
+    min-width: 0;
+    padding: 8px;
+    line-height: 10px;
+  }
+}
+
+.dialog-content {
+  color: $main-text-color;
+  font-size: 16px;
+}
+
+.dialog-actions {
+  button {
+    margin: 10px 20px;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0px 40px;
+  }
+}

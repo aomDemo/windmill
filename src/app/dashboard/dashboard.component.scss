@@ -88,6 +88,11 @@
 
         tr.mat-row:hover {
           background: $sec-color-40;
+          cursor: pointer;
+
+          td.mat-column-download {
+            background: $color-white !important;
+          }
         }
 
         ::ng-deep {

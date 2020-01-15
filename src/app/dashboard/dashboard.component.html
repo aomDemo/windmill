@@ -13,22 +13,22 @@
     <table mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="location">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
-        <td mat-cell *matCellDef="let element">{{ element.location }}</td>
+        <td mat-cell *matCellDef="let element" (click)="onOpenDetails(element)">{{ element.location }}</td>
       </ng-container>
 
       <ng-container matColumnDef="distance">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Distance</th>
-        <td mat-cell *matCellDef="let element">{{ element.distance | number: '1.2-2' }} km</td>
+        <td mat-cell *matCellDef="let element" (click)="onOpenDetails(element)">{{ element.distance | number: '1.2-2' }} km</td>
       </ng-container>
 
       <ng-container matColumnDef="deadline">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Deadline</th>
-        <td mat-cell *matCellDef="let element">{{ element.deadline | date: 'dd.MM.yyyy' }}</td>
+        <td mat-cell *matCellDef="let element" (click)="onOpenDetails(element)">{{ element.deadline | date: 'dd.MM.yyyy' }}</td>
       </ng-container>
 
       <ng-container matColumnDef="description">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
-        <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+        <td mat-cell *matCellDef="let element" (click)="onOpenDetails(element)">{{ element.description }}</td>
       </ng-container>
 
       <ng-container matColumnDef="download">

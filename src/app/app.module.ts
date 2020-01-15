@@ -9,12 +9,13 @@ import { AuthService, AuthGuard } from '@apiomat/ngx-aom-authentication';
 import { TpAuthStrategy } from './authentication/tp-auth.strategy';
 import { MaterialModule } from './shared/material/material.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { CoordinatesModule } from 'angular-coordinates';
 
 AuthService.configureWithStrategy(new TpAuthStrategy());
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, MaterialModule, SharedModule, LoginModule, DashboardModule],
+  imports: [BrowserModule, AppRoutingModule, MaterialModule, SharedModule, LoginModule, DashboardModule, CoordinatesModule],
   providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })

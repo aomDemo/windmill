@@ -1,0 +1,18 @@
+<div mat-dialog-title class="dialog-title">
+  <h3>{{ task.location }}</h3>
+  <button mat-raised-button color="primary" mat-dialog-close>X</button>
+</div>
+<mat-dialog-content class="dialog-content">
+  <p>{{ task.description }}</p>
+  <p>
+    <span>Location <br /></span>
+    <span>{{ locLong }} <br /></span>
+    <span>{{ locLat }}</span>
+  </p>
+  <p>Distance: {{ task.distance | number: '1.2-2' }} km</p>
+</mat-dialog-content>
+<mat-dialog-actions class="dialog-actions">
+  <button mat-raised-button color="primary" (click)="openFileUpload()">Upload Media</button>
+  <input id="fileInput" hidden type="file" (change)="uplaodFile($event.target.files)" name="file" />
+  <button mat-raised-button color="primary" (click)="completeTask()">Task completed</button>
+</mat-dialog-actions>
