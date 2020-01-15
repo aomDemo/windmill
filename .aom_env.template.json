@@ -1,0 +1,11 @@
+{
+  "baseUrl": "https://APIOMAT_URL",
+  "system": "TEST",
+  "appName": "YOUR_APP_NAME",
+  "customer": "YOUR_CUSTOMER_NAME",
+  "password": "YOUR_PASSWORD",
+  "language": "typescript",
+  "es6": true,
+  "outDir": "assets/lib",
+  "distDir": "./dist"
+}
