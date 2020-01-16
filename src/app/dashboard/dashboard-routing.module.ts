@@ -7,6 +7,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    // TODO: uncomment to check if user can go to this page
     // canActivate: [AuthGuard]
   }
 ];
