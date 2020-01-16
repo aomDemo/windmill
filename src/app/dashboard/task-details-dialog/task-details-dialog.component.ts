@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Task, TaskService } from '../task.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SnackbarService } from '../../shared/snackbar/snackbar.service';
-import { CoordinatesService, TransformationType, Direction } from 'angular-coordinates';
+import { CoordinatesService, Direction } from 'angular-coordinates';
 
 @Component({
   selector: 'app-task-details-dialog',
@@ -36,9 +36,21 @@ export class TaskDetailsDialogComponent {
   }
 
   async uplaodFile(fileList: FileList) {
+    const file = fileList && fileList.item(0);
+
+    if (!file) {
+      this.snackbarService.presentErrorMessage('No file selected.');
+      return;
+    }
+
     try {
-      await this.taskService.uploadFile(this.task, fileList && fileList.item(0));
-      this.snackbarService.presentSuccess('Media uploaded');
+      const reader = new FileReader();
+      reader.onload = async () => {
+        const { fileName, fileType } = this.fileNameParse(file.name);
+        await this.taskService.uploadFile(this.task, reader.result, fileName, fileType);
+        this.snackbarService.presentSuccess('Media uploaded');
+      };
+      reader.readAsArrayBuffer(file);
     } catch (error) {
       this.snackbarService.presentError(error);
     } finally {
@@ -55,5 +67,16 @@ export class TaskDetailsDialogComponent {
     } finally {
       this.onClose();
     }
+  }
+
+  private fileNameParse(name: string): { fileName: string, fileType: string } {
+    if (!name) {
+      return { fileName: null, fileType: null };
+    }
+    const parts = name.split('.');
+    const fileType = parts.length > 1 ? parts[parts.length - 1] : null;
+    parts.splice(parts.length - 1, 1);
+    const fileName = parts.join('.').replace(/,/g, '');
+    return { fileName, fileType };
   }
 }

@@ -52,7 +52,7 @@ export class TaskService {
     return null;
   }
 
-  uploadFile(task: Task, file: File): Promise<Task> {
+  uploadFile(task: Task, file: string | ArrayBuffer, fileName: string, fileType: string): Promise<Task> {
     // TODO: upload file
     return null;
   }
