@@ -26,7 +26,7 @@
     "@apiomat/aom-utilities": "^3.2.0",
     "@apiomat/ngx-aom-authentication": "0.0.2",
     "angular-coordinates": "^1.0.0",
-    "axios": "^0.19.1",
+    "axios": "^0.21.1",
     "hammerjs": "^2.0.8",
     "ng2-cookies": "^1.0.12",
     "reflect-metadata": "^0.1.13",
